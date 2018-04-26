@@ -1,0 +1,47 @@
+******************************************************
+_________ _______  _______  _______  _______  _       
+\__   __/(  ___  )(  ____ )/ ___   )(  ___  )( (    /|
+   ) (   | (   ) || (    )|\/   )  || (   ) ||  \  ( |
+   | |   | (___) || (____)|    /   )| (___) ||   \ | |
+   | |   |  ___  ||     __)   /   / |  ___  || (\ \) |
+   | |   | (   ) || (\ (     /   /  | (   ) || | \   |
+   | |   | )   ( || ) \ \__ /   (_/\| )   ( || )  \  |
+   )_(   |/     \||/   \__/(_______/|/     \||/    )_)
+
+******************************************************
+                                                      
+Agora você poderá compactar seus EPs em segundos!!
+
+0. Dependências: 
+
+    Python 2 ou 3
+
+1. Configuração:
+
+	Mova o script para o seu $PATH:
+    	$ cd ~/Downloads
+    	$ sudo mv tarzan /usr/local/bin
+
+2. Uso:
+
+	Em qualquer pasta no seu sistema, abra o terminal:
+    	$ tarzan exemplo1.java exemplo2.java
+
+Se for a primeira vez que você está usando o script, 
+o seu nome será pedido. O script formata o nome de 
+acordo com as instruções dos nossos monitores. 
+Um arquivo .txt com o seu nome fica guardado na pasta 
+/tmp/tarzan.
+
+Pronto! Estudantes e monitores nunca viram tamanha
+facilidade e organização! Ô Glória!
+
+******** CONFIRA O SEU EP ANTES DE ENVIAR! ***********
+********  NÃO ME RESPONSABILIZO POR ERROS  ***********
+
+Bugs? Sabe consertar?
+Dúvidas ou sugestões: nobru@linux.ime.usp.br
+
+******************************************************
+
+

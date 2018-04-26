@@ -1,0 +1,82 @@
+#!/usr/bin/python
+
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
+import os
+import os.path
+import sys 
+import shutil
+import tempfile
+
+
+def copyFile(src, dest):
+        try:
+            shutil.copy(src, dest)
+            # eg. src and dest are the same file
+        except shutil.Error as e:
+            print('Error: %s' % e)
+            # eg. source or destination doesn't exist
+        except IOError as e:
+            print('Error: %s' % e.strerror)
+
+def copytree(src, dst, symlinks=False, ignore=None):
+    if not os.path.exists(dst):
+        os.makedirs(dst)
+    for item in os.listdir(src):
+        s = os.path.join(src, item)
+        d = os.path.join(dst, item)
+        if os.path.isdir(s):
+            copytree(s, d, symlinks, ignore)
+        else:
+            if not os.path.exists(d) or os.stat(s).st_mtime - os.stat(d).st_mtime > 1:
+                shutil.copy2(s, d)
+
+def get_name():
+    if os.path.isfile('/tmp/tarzan/nometarzan.txt'):
+        nome_salvo = open('/tmp/tarzan/nometarzan.txt', 'r') 
+        nome = nome_salvo.read() 
+    else:
+        os.system('mkdir /tmp/tarzan')
+        nome = raw_input('Digite o seu nome: ')   
+        nome = nome.upper().replace(" ", "")
+        nome_salvo = open('/tmp/tarzan/nometarzan.txt','w')
+        nome_salvo.write(nome)
+
+    return nome
+
+def get_files():
+    if len(sys.argv) < 2:
+        print('Adicione pelo menos um arquivo como argumento')
+        exit()
+    alvos = []
+    for i in sys.argv[1:]:
+        alvos.append(i)
+
+    return alvos
+
+def tarzan(nome, alvos):
+    dirpath = tempfile.mkdtemp()    
+
+    for j in alvos:
+        copyFile(j, dirpath)
+
+    copytree(dirpath, nome)
+
+    comando = ['tar -cvf']
+    destino = nome + '.tar'
+    comando.append(destino)
+    comando.append(nome)
+    os.system(' '.join(comando))
+    rm = "rm -R " + nome
+    os.system(rm)
+    rm = "rm -R " + dirpath
+    os.system(rm)
+
+def main():
+    nome = get_name()
+    alvos = get_files()
+    tarzan(nome, alvos)
+
+main()
+
