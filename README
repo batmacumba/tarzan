@@ -14,7 +14,8 @@
     Python 2 ou 3
 
 1. Instalação:
-    $ make install
+    Faça download do diretório e rode dentro da pasta baixada o comando:
+        $ make install
 
 2. Uso:
     $ tarzan file.h file.c
