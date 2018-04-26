@@ -3,6 +3,7 @@ ifeq ($(shell uname -s), Darwin)
 endif
 ifeq ($(shell uname -s), Linux)
 	PREFIX = /usr/local
+#TODO: Windows coloca o binário onde?
 #else
 #	PREFIX = ???
 endif

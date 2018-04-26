@@ -1,47 +1,31 @@
-******************************************************
-_________ _______  _______  _______  _______  _       
-\__   __/(  ___  )(  ____ )/ ___   )(  ___  )( (    /|
-   ) (   | (   ) || (    )|\/   )  || (   ) ||  \  ( |
-   | |   | (___) || (____)|    /   )| (___) ||   \ | |
-   | |   |  ___  ||     __)   /   / |  ___  || (\ \) |
-   | |   | (   ) || (\ (     /   /  | (   ) || | \   |
-   | |   | )   ( || ) \ \__ /   (_/\| )   ( || )  \  |
-   )_(   |/     \||/   \__/(_______/|/     \||/    )_)
+********************************************************************************
+            _________ _______  _______  _______  _______  _
+            \__   __/(  ___  )(  ____ )/ ___   )(  ___  )( (    /|
+               ) (   | (   ) || (    )|\/   )  || (   ) ||  \  ( |
+               | |   | (___) || (____)|    /   )| (___) ||   \ | |
+               | |   |  ___  ||     __)   /   / |  ___  || (\ \) |
+               | |   | (   ) || (\ (     /   /  | (   ) || | \   |
+               | |   | )   ( || ) \ \__ /   (_/\| )   ( || )  \  |
+               )_(   |/     \||/   \__/(_______/|/     \||/    )_)
 
-******************************************************
-                                                      
-Agora você poderá compactar seus EPs em segundos!!
+********************************************************************************
 
-0. Dependências: 
-
+0. Dependências:
     Python 2 ou 3
 
-1. Configuração:
-
-	Mova o script para o seu $PATH:
-    	$ cd ~/Downloads
-    	$ sudo mv tarzan /usr/local/bin
+1. Instalação:
+    $ make install
 
 2. Uso:
+    $ tarzan file.h file.c
 
-	Em qualquer pasta no seu sistema, abra o terminal:
-    	$ tarzan exemplo1.java exemplo2.java
+    obs: o nome digitado será gravado em /tmp/tarzan
 
-Se for a primeira vez que você está usando o script, 
-o seu nome será pedido. O script formata o nome de 
-acordo com as instruções dos nossos monitores. 
-Um arquivo .txt com o seu nome fica guardado na pasta 
-/tmp/tarzan.
+3. Argumentos:
+    -g: trabalhos em grupo (o nome não será salvo no sistema):
+        $ tarzan -g file.h file.c
+    -r: apaga o arquivo de nome existente e grava um novo
+        $ tarzan -r file.h file.c
 
-Pronto! Estudantes e monitores nunca viram tamanha
-facilidade e organização! Ô Glória!
-
-******** CONFIRA O SEU EP ANTES DE ENVIAR! ***********
-********  NÃO ME RESPONSABILIZO POR ERROS  ***********
-
-Bugs? Sabe consertar?
-Dúvidas ou sugestões: nobru@linux.ime.usp.br
-
-******************************************************
-
-
+********************** CONFIRA O SEU EP ANTES DE ENVIAR! ***********************
+**********************  NÃO ME RESPONSABILIZO POR ERROS  ***********************

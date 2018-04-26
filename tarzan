@@ -33,38 +33,45 @@ def copytree(src, dst, symlinks=False, ignore=None):
                 shutil.copy2(s, d)
 
 def get_name():
-    if len(sys.argv) > 1:
-        # modo trabalho em grupo
-        if sys.argv[1] == "-g":
-            nome = raw_input('Digite os nomes dos membros do grupo: ')
-            nome = nome.upper().replace(" ", "")
-            return nome
+    # leitura de argumentos
     
-    # modo trabalho individual
+    # trabalho em grupo
+    if "-g" in sys.argv:
+        nome = raw_input('Digite os nomes dos membros do grupo: ')
+        nome = nome.upper().replace(" ", "")
+        return nome
+    # redefinicao do nome
+    if "-r" in sys.argv:
+        if os.path.isfile('/tmp/tarzan/nometarzan.txt'):
+            os.remove('/tmp/tarzan/nometarzan.txt')
+            os.rmdir('/tmp/tarzan')
+            print('Arquivo de nome removido')
+    
+    # leitura
     if os.path.isfile('/tmp/tarzan/nometarzan.txt'):
         nome_salvo = open('/tmp/tarzan/nometarzan.txt', 'r')
         nome = nome_salvo.read()
+    # escrita
     else:
         os.system('mkdir /tmp/tarzan')
         nome = raw_input('Digite o seu nome: ')
         nome = nome.upper().replace(" ", "")
         nome_salvo = open('/tmp/tarzan/nometarzan.txt','w')
         nome_salvo.write(nome)
-
     return nome
 
 def get_files():
-    if len(sys.argv) == 1 or (len(sys.argv) == 2 and sys.argv[1] == "-g"):
+    file_count = 0
+    alvos = []
+    if len(sys.argv) > 1:
+        for i in sys.argv[1:]:
+            if os.path.isfile(i):
+                alvos.append(i)
+                file_count += 1
+
+    if file_count == 0:
         print('Adicione pelo menos um arquivo como argumento')
         exit()
-    alvos = []
-    if sys.argv[1] == "-g":
-        for i in sys.argv[2:]:
-            alvos.append(i)
-    else:
-        for i in sys.argv[1:]:
-            alvos.append(i)
-
     return alvos
 
 def tarzan(nome, alvos):
