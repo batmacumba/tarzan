@@ -33,8 +33,7 @@ def copytree(src, dst, symlinks=False, ignore=None):
                 shutil.copy2(s, d)
 
 def get_name():
-    # leitura de argumentos
-    
+    ''' leitura de argumentos '''
     # trabalho em grupo
     if "-g" in sys.argv:
         nome = raw_input('Digite os nomes dos membros do grupo: ')
@@ -46,7 +45,8 @@ def get_name():
             os.remove('/tmp/tarzan/nometarzan.txt')
             os.rmdir('/tmp/tarzan')
             print('Arquivo de nome removido')
-    
+
+    ''' leitura/escrita do nome '''
     # leitura
     if os.path.isfile('/tmp/tarzan/nometarzan.txt'):
         nome_salvo = open('/tmp/tarzan/nometarzan.txt', 'r')
@@ -61,24 +61,29 @@ def get_name():
     return nome
 
 def get_files():
+    ''' Checa se os arquivos dados existem e retorna um array '''
     file_count = 0
     alvos = []
     if len(sys.argv) > 1:
         for i in sys.argv[1:]:
-            if os.path.isfile(i):
+            if os.path.exists(i):
                 alvos.append(i)
                 file_count += 1
-
+    # nenhum arquivo
     if file_count == 0:
         print('Adicione pelo menos um arquivo como argumento')
         exit()
     return alvos
 
 def tarzan(nome, alvos):
+    ''' Compactacao e limpeza '''
     dirpath = tempfile.mkdtemp()    
 
     for j in alvos:
-        copyFile(j, dirpath)
+        if os.path.isdir(j):
+            copytree(j, dirpath + "/" + j)
+        else:
+            copyFile(j, dirpath)
 
     copytree(dirpath, nome)
 

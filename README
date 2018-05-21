@@ -19,7 +19,7 @@
         $ make install
 
 2. Uso:
-    $ tarzan file.h file.c
+    $ tarzan exemplo.h exemplo.c diretorio_exemplo/
 
     obs: o nome digitado será gravado em /tmp/tarzan
 
